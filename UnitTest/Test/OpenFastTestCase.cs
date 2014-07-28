@@ -262,7 +262,7 @@ namespace OpenFAST.UnitTests.Test
             Assert.AreEqual(keyName, scalar.Key);
             if (id == null)
             {
-                Assert.True(scalar.IsIdNull());
+                Assert.IsTrue(scalar.IsIdNull());
             }
             else
             {

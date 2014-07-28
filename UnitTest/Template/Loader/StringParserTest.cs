@@ -50,7 +50,7 @@ namespace OpenFAST.UnitTests.Template.Loader
         public void TestParse()
         {
             XmlElement unicodeDef = Document("<string name='message' charset='unicode'/>");
-            Assert.True(_parser.CanParse(unicodeDef, _context));
+            Assert.IsTrue(_parser.CanParse(unicodeDef, _context));
             var unicode = (Scalar) _parser.Parse(unicodeDef, _context);
             AssertScalarField(unicode, FastType.Unicode, "message", null, "", DictionaryFields.Global, "message",
                               Operator.None, ScalarValue.Undefined, false);

@@ -52,7 +52,7 @@ namespace OpenFAST.UnitTests.Template.Loader
             XmlElement decimalDef =
                 Document(
                     "<decimal name='composed'><mantissa><delta dictionary='template' key='variable' value='100'/></mantissa><exponent><copy dictionary='template' key='static' value='-2'/></exponent></decimal>");
-            Assert.True(_parser.CanParse(decimalDef, _context));
+            Assert.IsTrue(_parser.CanParse(decimalDef, _context));
             var decimalt = (ComposedScalar) _parser.Parse(decimalDef, _context);
 
             AssertComposedScalarField(decimalt, FastType.Decimal, "composed", Operator.Copy,
@@ -75,7 +75,7 @@ namespace OpenFAST.UnitTests.Template.Loader
                 Document(
                     "<decimal name='composed'><mantissa><delta/></mantissa><exponent><constant value='-2'/></exponent></decimal>");
             _context.Dictionary = "template";
-            Assert.True(_parser.CanParse(decimalDef, _context));
+            Assert.IsTrue(_parser.CanParse(decimalDef, _context));
             var decimalt = (ComposedScalar) _parser.Parse(decimalDef, _context);
             AssertComposedScalarField(decimalt, FastType.Decimal, "composed", Operator.Constant, new IntegerValue(-2),
                                       Operator.Delta, ScalarValue.Undefined);
@@ -89,7 +89,7 @@ namespace OpenFAST.UnitTests.Template.Loader
             XmlElement decimalDef =
                 Document(
                     "<decimal name='composed'><mantissa><delta/></mantissa><exponent><constant value='-2'/></exponent></decimal>");
-            Assert.True(_parser.CanParse(decimalDef, _context));
+            Assert.IsTrue(_parser.CanParse(decimalDef, _context));
             var decimalt = (ComposedScalar) _parser.Parse(decimalDef, _context);
             AssertComposedScalarField(decimalt, FastType.Decimal, "composed", Operator.Constant, new IntegerValue(-2),
                                       Operator.Delta, ScalarValue.Undefined);

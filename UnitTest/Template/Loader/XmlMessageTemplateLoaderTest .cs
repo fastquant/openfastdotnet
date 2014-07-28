@@ -69,7 +69,7 @@ namespace OpenFAST.UnitTests.Template.Loader
             Assert.AreEqual(4, templates[0].FieldCount);
             AssertScalarField(templates[0], 1, FastType.U32, "quantity", Operator.None);
             AssertScalarField(templates[0], 3, FastType.Decimal, "price", Operator.None);
-            Assert.True(templates[0].GetField(2) is DynamicTemplateReference);
+            Assert.IsTrue(templates[0].GetField(2) is DynamicTemplateReference);
         }
 
         [Test]
@@ -216,10 +216,10 @@ namespace OpenFAST.UnitTests.Template.Loader
             Scalar location = messageTemplate.GetScalar("location");
             Scalar id2 = messageTemplate.GetScalar("id2");
 
-            Assert.False(name.IsOptional);
-            Assert.True(id.IsOptional);
-            Assert.False(location.IsOptional);
-            Assert.True(id2.IsOptional);
+            Assert.IsFalse(name.IsOptional);
+            Assert.IsTrue(id.IsOptional);
+            Assert.IsFalse(location.IsOptional);
+            Assert.IsTrue(id2.IsOptional);
 
             Assert.AreEqual(TypeCodec.Unicode, name.TypeCodec);
             Assert.AreEqual(TypeCodec.NullableUnicode, id.TypeCodec);

@@ -58,7 +58,7 @@ namespace OpenFAST.UnitTests.Template.Loader
             catch (StatErrorException e)
             {
                 Assert.AreEqual(StaticError.InvalidType, e.Error);
-                Assert.True(e.Message.StartsWith("The type array is not defined.  Possible types: "));
+                Assert.IsTrue(e.Message.StartsWith("The type array is not defined.  Possible types: "));
             }
         }
 
@@ -66,7 +66,7 @@ namespace OpenFAST.UnitTests.Template.Loader
         public void TestParseCopyInt()
         {
             XmlElement int32Def = Document("<int32 name='value'><copy/></int32>");
-            Assert.True(_parser.CanParse(int32Def, _context));
+            Assert.IsTrue(_parser.CanParse(int32Def, _context));
             var int32 = (Scalar) _parser.Parse(int32Def, _context);
             AssertScalarField(int32, FastType.I32, "value", null, "", DictionaryFields.Global, "value",
                               Operator.Copy, ScalarValue.Undefined, false);
@@ -78,7 +78,7 @@ namespace OpenFAST.UnitTests.Template.Loader
             XmlElement decimalDef =
                 Document(
                     "<decimal name='price'><delta value='1.2' key='decimalValue' dictionary='marketData'/></decimal>");
-            Assert.True(_parser.CanParse(decimalDef, _context));
+            Assert.IsTrue(_parser.CanParse(decimalDef, _context));
             var decimalt = (Scalar) _parser.Parse(decimalDef, _context);
             AssertScalarField(decimalt, FastType.Decimal, "price", null, "", "marketData", "decimalValue",
                               Operator.Delta, new DecimalValue(1.2), false);
@@ -89,7 +89,7 @@ namespace OpenFAST.UnitTests.Template.Loader
         {
             XmlElement stringDef =
                 Document("<string name='text' ns='http://openfast.org/data/' presence='optional'><default/></string>");
-            Assert.True(_parser.CanParse(stringDef, _context));
+            Assert.IsTrue(_parser.CanParse(stringDef, _context));
             var stringt = (Scalar) _parser.Parse(stringDef, _context);
             AssertScalarField(stringt, FastType.String, "text", null, "http://openfast.org/data/",
                               DictionaryFields.Global, "text", Operator.Default,

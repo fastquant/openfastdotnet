@@ -50,7 +50,7 @@ namespace OpenFAST.UnitTests.Template.Loader
             var c = new ParsingContext(_context) {Dictionary = "template"};
             XmlElement node = Document("<sequence name='seq'/>");
 
-            Assert.True(_parser.CanParse(node, c));
+            Assert.IsTrue(_parser.CanParse(node, c));
             var sequence = (Sequence) _parser.Parse(node, c);
             Assert.AreEqual("template", sequence.Length.Dictionary);
 
@@ -68,7 +68,7 @@ namespace OpenFAST.UnitTests.Template.Loader
 
             XmlElement node = Document("<sequence name='seq'><length name='seqLen'/></sequence>");
 
-            Assert.True(_parser.CanParse(node, c));
+            Assert.IsTrue(_parser.CanParse(node, c));
             var sequence = (Sequence) _parser.Parse(node, c);
             Assert.AreEqual(dictionary, sequence.Length.Dictionary);
             Assert.AreEqual(ns, sequence.Length.QName.Namespace);
@@ -86,7 +86,7 @@ namespace OpenFAST.UnitTests.Template.Loader
                     "  <length name='seqLen'/>" +
                     "</sequence>");
 
-            Assert.True(_parser.CanParse(node, c));
+            Assert.IsTrue(_parser.CanParse(node, c));
             var sequence = (Sequence) _parser.Parse(node, c);
             Assert.AreEqual(DictionaryFields.Type, sequence.Length.Dictionary);
             Assert.AreEqual("http://openfast.org/override", sequence.Length.QName.Namespace);
@@ -109,7 +109,7 @@ namespace OpenFAST.UnitTests.Template.Loader
                                        "  <typeRef name='Seq' ns='org.openfast.override'/>" +
                                        "</sequence>");
 
-            Assert.True(_parser.CanParse(node, c));
+            Assert.IsTrue(_parser.CanParse(node, c));
             var sequence = (Sequence) _parser.Parse(node, c);
             Assert.AreEqual(DictionaryFields.Type, sequence.Length.Dictionary);
             Assert.AreEqual("http://openfast.org/override", sequence.Length.QName.Namespace);
